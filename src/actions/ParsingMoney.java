@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ParsingMoney extends TransferMoneyToAnAccount{
-    private static void parseFiles() throws IOException {
+    public static void parseFiles() throws IOException {
         File inputDirectory = new File(INPUT_DIRECTORY);
         if (!inputDirectory.exists() || !inputDirectory.isDirectory()) {
             System.out.println("Каталог input не найден или не является директорией");

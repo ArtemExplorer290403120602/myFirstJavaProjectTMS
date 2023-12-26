@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ViewingTheTotal extends TransferMoneyToAnAccount{
-    private static void showReport() throws IOException {
+    public static void showReport() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(REPORT_FILE));
 
         String line;
