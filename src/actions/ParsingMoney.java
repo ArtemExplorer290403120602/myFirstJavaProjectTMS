@@ -1,10 +1,22 @@
 package actions;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ParsingMoney extends TransferMoneyToAnAccount{
+    private static final String DB_URL = "jdbc:mysql://Artem:3306/tms1";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "root2";
+
     public static void parseFiles() throws IOException {
         File inputDirectory = new File(INPUT_DIRECTORY);
         if (!inputDirectory.exists() || !inputDirectory.isDirectory()) {
@@ -30,6 +42,21 @@ public class ParsingMoney extends TransferMoneyToAnAccount{
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date currentDate = new Date();
         return dateFormat.format(currentDate);
+    }
+
+    private static void insertIntoDatabase(String dateTime, String fromAccount, String toAccount, double amount) {
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            String sql = "INSERT INTO MoneyTransfers (date_time, from_account, to_account, amount) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, dateTime);
+                preparedStatement.setString(2, fromAccount);
+                preparedStatement.setString(3, toAccount);
+                preparedStatement.setDouble(4, amount);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void processFile(File file) throws IOException {
@@ -67,6 +94,9 @@ public class ParsingMoney extends TransferMoneyToAnAccount{
 
                 // Выполнение перевода с одного счета на другой
                 performTransfer(fromAccount, toAccount, amount);
+
+                // Вставка данных в базу данных
+                insertIntoDatabase(getCurrentDateTime(), fromAccount, toAccount, amount);
 
                 reportWriter.write(getCurrentDateTime() + " | " + file.getName() + " | перевод с " + fromAccount + " на " + toAccount + " " + String.format("%.2f", amount) + " | успешно обработан\n");
             } catch (NumberFormatException e) {
