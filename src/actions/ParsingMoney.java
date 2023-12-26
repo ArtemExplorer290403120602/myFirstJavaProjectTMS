@@ -57,7 +57,7 @@ public class ParsingMoney extends TransferMoneyToAnAccount{
 
             // Проверка, является ли amountStr числом
             try {
-                int amount = Integer.parseInt(amountStr);
+                double amount = Double.parseDouble(amountStr);
 
                 // Проверка на положительное значение amount
                 if (amount <= 0) {
@@ -68,7 +68,7 @@ public class ParsingMoney extends TransferMoneyToAnAccount{
                 // Выполнение перевода с одного счета на другой
                 performTransfer(fromAccount, toAccount, amount);
 
-                reportWriter.write(getCurrentDateTime() + " | " + file.getName() + " | перевод с " + fromAccount + " на " + toAccount + " " + amount + " | успешно обработан\n");
+                reportWriter.write(getCurrentDateTime() + " | " + file.getName() + " | перевод с " + fromAccount + " на " + toAccount + " " + String.format("%.2f", amount) + " | успешно обработан\n");
             } catch (NumberFormatException e) {
                 reportWriter.write(getCurrentDateTime() + " | " + file.getName() + " | неверный формат суммы перевода\n");
             }
@@ -95,7 +95,7 @@ public class ParsingMoney extends TransferMoneyToAnAccount{
         return account.matches("\\d{5}-\\d{5}");
     }
 
-    private static void performTransfer(String fromAccount, String toAccount, int amount) {
+    private static void performTransfer(String fromAccount, String toAccount, double amount) {
         System.out.println("Выполняется перевод счета " + fromAccount + " на счет " + toAccount +
                 " в размере " + amount + " рублей");
     }

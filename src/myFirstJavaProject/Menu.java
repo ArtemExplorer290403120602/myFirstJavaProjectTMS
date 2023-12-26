@@ -3,6 +3,8 @@ package myFirstJavaProject;
 import actions.ParsingMoney;
 import actions.TransferMoneyToAnAccount;
 import actions.ViewingTheTotal;
+import actions.Vtregw;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -27,6 +29,7 @@ public class Menu extends TransferMoneyToAnAccount {
                     Добро пожаловать в банковскую систему. Перед вами доступны следующие действия:
                       1: Парсинг файлов перевода из input
                       2: Вывод списка всех переводов из файла-отчета
+                      3: Вывод переводов по выбранному диапозону дат
                       0: Завершить программу
                     """);
                 System.out.print("Пожалуйста, введите выбранную вами цифру: ");
@@ -43,6 +46,13 @@ public class Menu extends TransferMoneyToAnAccount {
                     case 2:
                         ViewingTheTotal.showReport();
                         break;
+                    case 3:
+                        System.out.println("Введите начальную дату в формате yyyy-MM-dd HH:mm:ss:");
+                        String startDate = consoleReader.readLine();
+                        System.out.println("Введите конечную дату в формате yyyy-MM-dd HH:mm:ss:");
+                        String endDate = consoleReader.readLine();
+
+                        Vtregw.showReportByDateRange(startDate,endDate);
                     default:
                         System.out.println("Некорректный выбор действия");
                         break;
