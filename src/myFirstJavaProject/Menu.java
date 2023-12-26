@@ -3,7 +3,7 @@ package myFirstJavaProject;
 import java.util.Scanner;
 
 public class Menu {
-    static void menu(){
+    protected static void menu(){
         Scanner scanner=new Scanner(System.in);
         System.out.print(""" 
                 Добро пожаловать в банковскую систему , перед вам существуют вот такие дейсвтия:
