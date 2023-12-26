@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/User/Documents/myFirstJavaProjectTMS/src</OriginalElement>
+  <nodes>
+    <node x="-268.50437317784264" y="-159.62536443148684">actions.ParsingMoney</node>
+    <node x="492.1122448979588" y="304.420918367347">myFirstJavaProject.Main</node>
+    <node x="-432.2926384839651" y="101.82470845481052">actions.TransferMoneyToAnAccount</node>
+    <node x="469.4788629737609" y="-60.74599125364429">actions.ViewingTheTotal</node>
+    <node x="-311.93804664723035" y="384.5473760932945">myFirstJavaProject.Menu</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="actions.ParsingMoney" target="actions.TransferMoneyToAnAccount" relationship="GENERALIZATION">
+      <point x="148.50002332361527" y="-2.47813411107245E-4" />
+      <point x="314.0" y="-55.62561224489795" />
+      <point x="314.0" y="169.82430029154528" />
+      <point x="137.00030029154524" y="-4.0816326523440694E-4" />
+    </edge>
+    <edge source="myFirstJavaProject.Menu" target="actions.TransferMoneyToAnAccount" relationship="GENERALIZATION">
+      <point x="-61.49966763848386" y="-3.7609329444876494E-4" />
+      <point x="314.0" y="428.547" />
+      <point x="314.0" y="169.82430029154528" />
+      <point x="137.00030029154524" y="-4.0816326523440694E-4" />
+    </edge>
+    <edge source="actions.ViewingTheTotal" target="actions.TransferMoneyToAnAccount" relationship="GENERALIZATION">
+      <point x="-90.49993586005837" y="5.830903789671993E-5" />
+      <point x="314.0" y="-16.745932944606395" />
+      <point x="314.0" y="169.82430029154528" />
+      <point x="137.00030029154524" y="-4.0816326523440694E-4" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.125512715340443" showDependencies="false" x="136.5" y="168.40816326530614" />
+  <SelectedNodes>
+    <node>myFirstJavaProject.Main</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
