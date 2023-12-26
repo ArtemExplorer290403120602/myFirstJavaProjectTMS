@@ -3,8 +3,11 @@ package myFirstJavaProject;
 import actions.ParsingMoney;
 import actions.TransferMoneyToAnAccount;
 import actions.ViewingTheTotal;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Menu extends TransferMoneyToAnAccount {
     protected static void menu() {
